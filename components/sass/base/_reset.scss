@@ -1,0 +1,11 @@
+/*** Reset CSS ***/
+@include global-reset;
+
+input,
+textarea {
+	@include reset-focus;
+}
+
+img {
+  vertical-align: top;
+}

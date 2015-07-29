@@ -1,0 +1,221 @@
+@charset "UTF-8";
+/*** Reset CSS ***/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+html {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+q, blockquote {
+  quotes: none;
+}
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+a img {
+  border: none;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+input,
+textarea {
+  outline: 0;
+}
+
+img {
+  vertical-align: top;
+}
+
+.clearfix, #container, #header {
+  zoom: 1;
+}
+.clearfix:after, #container:after, #header:after {
+  clear: both;
+  content: '';
+  display: block;
+}
+
+.hover {
+  -moz-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+.hover:hover {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
+  opacity: 0.7;
+}
+
+.ffg, body {
+  font-family: YuGothic, Yu Gothic, '游ゴシック体',  'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', sans-serif;
+}
+
+.ffm {
+  font-family: YuMincho, Yu Mincho, '游明朝体', 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'HG明朝E', 'ＭＳ Ｐ明朝', 'MS PMincho', 'MS 明朝', serif;
+}
+
+.fr, .right {
+  float: right;
+}
+
+.fl, .left, .col3 div, .col4 div, #g-nav li {
+  float: left;
+}
+
+.tac {
+  text-align: center;
+}
+
+.tal {
+  text-align: left;
+}
+
+.tar {
+  text-align: right;
+}
+
+/*** Typography ***/
+html {
+  font-size: 100%;
+  line-height: 1.5em;
+}
+
+@media only screen and (max-width: 739px) {
+  body {
+    font-size: 0.875em;
+    line-height: 1.71429em;
+  }
+}
+
+strong {
+  font-weight: bold;
+}
+
+em {
+  font-style: italic;
+}
+
+/*** UI ***/
+/* Lists */
+/* Images */
+/* Buttons */
+/* Forms */
+/* Tables */
+/* Icons */
+/*** Common ***/
+.noscript {
+  background-color: #ffe5e5;
+  border: 1px solid #f00;
+  color: #f00;
+  display: none;
+  font-weight: bold;
+  line-height: 3;
+  text-align: center;
+}
+
+#container {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 24px;
+  width: 1024px;
+}
+@media only screen and (max-width: 1023px) {
+  #container {
+    width: 100%;
+  }
+}
+
+.left {
+  width: 50%;
+}
+@media only screen and (max-width: 1023px) {
+  .left {
+    width: 100%;
+  }
+}
+
+.right {
+  width: 50%;
+}
+@media only screen and (max-width: 1023px) {
+  .right {
+    width: 100%;
+  }
+}
+
+.col3 div, .col4 div {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0 24px;
+}
+
+.col3 div {
+  width: 33.33%;
+}
+@media only screen and (max-width: 1023px) {
+  .col3 div {
+    width: 100%;
+  }
+}
+
+.col4 div {
+  width: 25%;
+}
+@media only screen and (max-width: 1023px) {
+  .col4 div {
+    width: 100%;
+  }
+}
+
+/*** Header ***/
+/*** Navigation ***/
+/*** Breadcrumbs ***/
+/*** Localmenus ***/
+/*** Side ***/
+/*** Footer ***/
+/******************************
+    Below For Each Page
+******************************/
+/*** / ***/

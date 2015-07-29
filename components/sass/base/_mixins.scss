@@ -1,0 +1,38 @@
+@mixin gd($startColor: #ddd, $amount: 15%, $direction: top, $IE: false){
+	$endColor: darken($startColor, $amount);
+	background: mix($startColor, $endColor, 50%);
+    @include background-image(linear-gradient($direction, $startColor, $endColor));
+    @if $IE {
+			@if $direction == top {
+				@include filter-gradient($startColor, $endColor, vertical);
+			}
+			@if $direction == left {
+				@include filter-gradient($startColor, $endColor, horizontal);
+			}
+	}
+}
+
+
+@mixin f-width($width, $parentWidth) {
+	max-width: $width;
+	width: ($width / $parentWidth) * 100%;
+}
+
+@mixin box-sizing($type) {
+	-webkit-box-sizing:$type;
+	-moz-box-sizing:$type;
+	box-sizing:$type;
+}
+
+@mixin break-point($point) {
+	 @if $point == tablet{
+		 @media only screen and (max-width: 1023px) {
+		 @content;
+		 }
+	 }
+	 @else if $point == mobile{
+		 @media only screen and (max-width: 739px) {
+		 @content;
+		 }
+	 }
+ }

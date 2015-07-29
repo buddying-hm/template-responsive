@@ -1,0 +1,57 @@
+/*** Common ***/
+.noscript {
+	background-color: #ffe5e5;
+	border: 1px solid #f00;
+	color: #f00;
+	display: none;
+	font-weight: bold;
+	line-height: 3;
+	text-align: center;
+}
+#container {
+	@extend .clearfix;
+	@include box-sizing(border-box);
+	margin: 0 auto;
+	padding: $base-line-height;
+	width: $width;
+	@include break-point(tablet) {
+		width: 100%;
+	}
+}
+.left {
+	@extend .fl;
+	width: 50%;
+	@include break-point(tablet) {
+		width: 100%;
+	}
+}
+.right {
+	@extend .fr;
+	width: 50%;
+	@include break-point(tablet) {
+		width: 100%;
+	}
+}
+.col3, .col4 {
+	div {
+		@extend .fl;
+		@include box-sizing(border-box);
+		padding: 0 $base-line-height;
+	}
+}
+.col3 {
+	div {
+		width: 33.33%;
+		@include break-point(tablet) {
+			width: 100%;
+		}
+	}
+}
+.col4 {
+	div {
+		width: 25%;
+		@include break-point(tablet) {
+			width: 100%;
+		}
+	}
+}

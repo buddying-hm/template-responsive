@@ -1,0 +1,43 @@
+.clearfix{
+  zoom:1;
+  &:after{
+    clear: both;
+    content: '';
+    display: block;
+  }
+}
+
+.hover {
+  @include transition(all .2s ease-in);
+  &:hover {
+    @include opacity(.7);
+  }
+}
+
+.ffg {
+  font-family: YuGothic, Yu Gothic, '游ゴシック体',  'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', sans-serif;
+}
+
+.ffm {
+  font-family: YuMincho, Yu Mincho, '游明朝体', 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'HG明朝E', 'ＭＳ Ｐ明朝', 'MS PMincho', 'MS 明朝', serif;
+}
+
+.fr {
+	float: right;
+}
+
+.fl {
+	float: left;
+}
+
+.tac {
+	text-align: center;
+}
+
+.tal {
+	text-align: left;
+}
+
+.tar {
+	text-align: right;
+}
