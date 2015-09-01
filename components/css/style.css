@@ -1,5 +1,6 @@
 @charset "UTF-8";
 /*** Reset CSS ***/
+@import url(https://fonts.googleapis.com/earlyaccess/notosansjapanese.css);
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -86,11 +87,11 @@ img {
 }
 
 .ffg, body {
-  font-family: YuGothic, Yu Gothic, '游ゴシック体',  'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', sans-serif;
+  font-family: 'Noto Sans Japanese', Yu Gothic, '游ゴシック体',  'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', sans-serif;
 }
 
 .ffm {
-  font-family: YuMincho, Yu Mincho, '游明朝体', 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'HG明朝E', 'ＭＳ Ｐ明朝', 'MS PMincho', 'MS 明朝', serif;
+  font-family: Yu Mincho, '游明朝体', 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'HG明朝E', 'ＭＳ Ｐ明朝', 'MS PMincho', 'MS 明朝', serif;
 }
 
 .fr, .right {
