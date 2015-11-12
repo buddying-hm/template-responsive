@@ -120,7 +120,7 @@ html {
   line-height: 1.5em;
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 478px) {
   body {
     font-size: 0.875em;
     line-height: 1.71429em;
