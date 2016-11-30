@@ -141,6 +141,10 @@ em {
 /* Buttons */
 /* Forms */
 /* Tables */
+table {
+  table-layout: fixed;
+}
+
 /* Icons */
 /*** Common ***/
 .noscript {
