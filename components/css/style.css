@@ -137,7 +137,6 @@ em {
 
 /*** UI ***/
 /* Lists */
-/* Images */
 /* Buttons */
 /* Forms */
 /* Tables */
@@ -145,7 +144,6 @@ table {
   table-layout: fixed;
 }
 
-/* Icons */
 /*** Common ***/
 .noscript {
   background-color: #ffe5e5;
