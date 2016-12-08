@@ -36,3 +36,24 @@
 		 }
 	 }
  }
+
+@mixin centering-elements($horizontal: true, $vertical: true) {
+	position: absolute;
+	@if $horizontal and $vertical {
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	} @else if $horizontal {
+		left: 50%;
+		transform: translate(-50%, 0);
+	} @else if $vertical {
+		top: 50%;
+		transform: translate(0, -50%);
+	}
+}
+
+@mixin pseudo-element($content: '', $position: absolute, $display: block) {
+	position: $position;
+	display: $display;
+	content: $content;
+}
