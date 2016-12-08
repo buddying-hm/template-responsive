@@ -53,3 +53,35 @@
 	transform: translate(0, -50%);
 }
 ```
+### 擬似要素使用時のプロパティまとめ  
+  
+  #### use  
+
+  ```
+  .elements {
+	&::before {
+		@include pseudo-element;
+	}
+
+	&::after {
+		@include pseudo-element('foo');
+	}
+}
+```
+**第2・第3引数を変更すればposition: relative;にしたりdisplay: inline-block;にしたりもできる**
+
+#### output  
+
+```
+.elements::before {
+	position: absolute;
+	display: block;
+	content: "";
+}
+
+.elements::after {
+	position: absolute;
+	display: block;
+	content: "foo";
+}
+```

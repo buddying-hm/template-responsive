@@ -51,3 +51,9 @@
 		transform: translate(0, -50%);
 	}
 }
+
+@mixin pseudo-element($content: '', $position: absolute, $display: block) {
+	position: $position;
+	display: $display;
+	content: $content;
+}
