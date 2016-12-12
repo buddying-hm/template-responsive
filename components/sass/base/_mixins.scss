@@ -25,17 +25,20 @@
 }
 
 @mixin break-point($point) {
-	 @if $point == tablet{
-		 @media only screen and (max-width: 1023px) {
-		 @content;
-		 }
-	 }
-	 @else if $point == mobile{
-		 @media only screen and (max-width: 478px) {
-		 @content;
-		 }
-	 }
- }
+	@if $point == pc {
+		@media only screen and (min-width: 1024px) {
+			@content;
+		}
+	} @else if $point == tablet {
+		@media only screen and (max-width: 1023px) {
+			@content;
+		}
+	} @else if $point == mobile {
+		@media only screen and (max-width: 478px) {
+			@content;
+		}
+	}
+}
 
 @mixin centering-elements($horizontal: true, $vertical: true) {
 	position: absolute;
