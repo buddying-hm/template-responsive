@@ -94,11 +94,11 @@ img {
   font-family: Yu Mincho, '游明朝', 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'HG明朝E', 'ＭＳ Ｐ明朝', 'MS PMincho', 'MS 明朝', serif;
 }
 
-.fr, .right {
+.fr {
   float: right;
 }
 
-.fl, .left, .col3 div, .col4 div, #g-nav li {
+.fl, #g-nav li {
   float: left;
 }
 
@@ -165,49 +165,6 @@ table {
 }
 @media only screen and (max-width: 1023px) {
   #container {
-    width: 100%;
-  }
-}
-
-.left {
-  width: 50%;
-}
-@media only screen and (max-width: 1023px) {
-  .left {
-    width: 100%;
-  }
-}
-
-.right {
-  width: 50%;
-}
-@media only screen and (max-width: 1023px) {
-  .right {
-    width: 100%;
-  }
-}
-
-.col3 div, .col4 div {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  padding: 0 24px;
-}
-
-.col3 div {
-  width: 33.33%;
-}
-@media only screen and (max-width: 1023px) {
-  .col3 div {
-    width: 100%;
-  }
-}
-
-.col4 div {
-  width: 25%;
-}
-@media only screen and (max-width: 1023px) {
-  .col4 div {
     width: 100%;
   }
 }
