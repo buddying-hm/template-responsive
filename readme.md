@@ -1,5 +1,31 @@
 # responsive-template  
   
+## include  
+#### use  
+
+```
+.boxA {
+	@include ellipsis;
+}
+
+```
+
+#### output  
+
+
+```
+
+.boxA {
+  white-space: nowrap;
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+
+```
+
+
  ## mixin  
 
 ### センタリング  
