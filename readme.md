@@ -1,6 +1,10 @@
 # responsive-template  
-  
-## include  
+
+## menu
+* [@include](#include)
+* [@mixin](#mixin)
+
+## @include  
 #### use  
 
 ```
@@ -26,7 +30,7 @@
 ```
 
 
- ## mixin  
+## @mixin  
 
 ### センタリング  
 * .elements01 … 天地左右中央
