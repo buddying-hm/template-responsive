@@ -34,7 +34,7 @@
 			@content;
 		}
 	} @else if $point == mobile {
-		@media only screen and (max-width: 478px) {
+		@media only screen and (max-width: 599px) {
 			@content;
 		}
 	}
