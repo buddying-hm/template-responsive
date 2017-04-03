@@ -18,40 +18,15 @@
 		width: 100%;
 	}
 }
-.left {
-	@extend .fl;
-	width: 50%;
-	@include break-point(tablet) {
-		width: 100%;
-	}
+
+
+// スクロールで要素のスライディング表示
+.sliding {
+	opacity: 0;
+	@include translate(0, 80px);
+	@include transition(all 1s ease);
 }
-.right {
-	@extend .fr;
-	width: 50%;
-	@include break-point(tablet) {
-		width: 100%;
-	}
-}
-.col3, .col4 {
-	div {
-		@extend .fl;
-		@include box-sizing(border-box);
-		padding: 0 $base-line-height;
-	}
-}
-.col3 {
-	div {
-		width: 33.33%;
-		@include break-point(tablet) {
-			width: 100%;
-		}
-	}
-}
-.col4 {
-	div {
-		width: 25%;
-		@include break-point(tablet) {
-			width: 100%;
-		}
-	}
+.sliding.action {
+	opacity: 1;
+	@include translate(0, 0);
 }
