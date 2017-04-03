@@ -13,4 +13,24 @@ $(function(){
 		$('body,html').animate({scrollTop:position}, speed, 'swing');
 		return false;
 	});
+
+	// scrollしてスライディング表示
+	var tablet = 1024;
+	if ($(window).width() > tablet) {
+		$(window).on('scroll', function () {
+			$('.sliding').each(function() {
+				var elemPos = $(this).offset().top;
+				var scroll = $(window).scrollTop();
+				var windowHeight = $(window).height();
+				if (scroll > elemPos - windowHeight) {
+					$(this).addClass('action');
+				}
+			});
+		});
+	} else {
+		//mobile size
+		$('.sliding').each(function() {
+			$(this).addClass('action');
+		});
+	}
 });

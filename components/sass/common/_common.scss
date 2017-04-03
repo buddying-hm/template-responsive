@@ -18,3 +18,15 @@
 		width: 100%;
 	}
 }
+
+
+// スクロールで要素のスライディング表示
+.sliding {
+	opacity: 0;
+	@include translate(0, 80px);
+	@include transition(all 1s ease);
+}
+.sliding.action {
+	opacity: 1;
+	@include translate(0, 0);
+}
