@@ -1,25 +1,16 @@
-const webpack = require('webpack')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const path = require('path')
-const config = require('../package.json').config
+const webpack = require('webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const p_path = require('./p_path');
 
-const output = process.env.OUTPUT ? process.env.OUTPUT : 'markup'
-const configRoot = path.dirname(path.resolve(__dirname, '../package.json'))
-const assetsPath = process.env.NODE_ENV === 'production' ?
-                   path.join(configRoot, config.server_assets_path) :
-                   path.join(configRoot, config[`${output}_assets_path`]) || ''
-
-if (!assetsPath) {
-  throw new Error(`出力先パスエラー assetsPath-> ${assetsPath}`)
-}
+process.noDeprecation = true;
 
 const webpackConf = {
-  context: `${__dirname}/js`,
+  context: `${p_path._assets}/js`,
   entry: {
     common: './common.js'
   },
   output: {
-    path: `${assetsPath}/js`,
+    path: `${p_path.TARGET}/js`,
     filename: '[name].js',
   },
   resolve: {
@@ -31,8 +22,8 @@ const webpackConf = {
       jQuery: 'jquery',
     }),
     new CopyWebpackPlugin([
-      { from: `${__dirname}/js/vender/**/*.js`, to: `${assetsPath}/js`, flatten: true },
-      { from: `${__dirname}/img`, to: `${assetsPath}/img` }
+      { from: `${p_path._assets}/js/vender/**/*.js`, to: `${p_path.TARGET}/js`, flatten: true },
+      { from: `${p_path._assets}/img`, to: `${p_path.TARGET}/img` }
     ])
   ],
   module: {
@@ -45,14 +36,17 @@ const webpackConf = {
         ]
       }
     ]
+  },
+  stats: {
+    colors: true
   }
 }
 
 if (process.env.NODE_ENV === 'production') {
-  webpackConf.plugins.push(new webpack.optimize.UglifyJsPlugin())
-  webpackConf.plugins.push(new webpack.DefinePlugin({ 'process.env': {NODE_ENV: '"production"'} }))
+  webpackConf.plugins.push(new webpack.optimize.UglifyJsPlugin());
+  webpackConf.plugins.push(new webpack.DefinePlugin({ 'process.env': {NODE_ENV: '"production"'} }));
 } else {
-  webpackConf.devtool = 'inline-source-map'
+  webpackConf.devtool = 'inline-source-map';
 }
 
-module.exports = webpackConf
+module.exports = webpackConf;

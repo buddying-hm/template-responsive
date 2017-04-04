@@ -1,29 +1,27 @@
-const del = require('del')
-const path = require('path')
-const config = require('./package.json').config
+const del = require('del');
+const p_path = require('./p_path');
 
 function clean() {
-  const configRoot = path.dirname(path.resolve(__dirname, 'package.json'))
-  const assetsPath = process.env.OUTPUT ?
-                     path.join(configRoot, config[`${process.env.OUTPUT}_assets_path`]) :
-                     false
-
-  if (!assetsPath) return
-
-  console.log('---cleaning---\n')
-  let fileList
-  switch(process.env.OUTPUT) {
+  let fileList;
+  switch(process.env.TARGET) {
     case 'markup':
-      fileList = [`${__dirname}/markup/**/*`, `!${__dirname}/markup/**/.*`]
-      break
+      fileList = [`${p_path.ROOT}/markup/**/*`, `!${p_path.ROOT}/markup/**/.*`];
+      break;
+    case 'server':
+      fileList = [p_path.SERVER];
+      break;
     default:
-      fileList = [assetsPath]
-      break
+      fileList = [`${p_path.ROOT}/markup/**/*`, `!${p_path.ROOT}/markup/**/.*`, p_path.SERVER, p_path.MARKUP];
+      break;
   }
 
-  del(fileList).then(paths => {
-    console.log('Deleted files and folders:\n', paths.join('\n'), '\n')
-  })
+  console.log('---cleaning directory or files---\n');
+  console.log(fileList.join('\n'), '\n');
+  return new Promise((resolve, reject) => {
+    del(fileList).then(() => {
+      resolve();
+    });
+  });
 }
 
-module.exports = clean
+module.exports = clean();

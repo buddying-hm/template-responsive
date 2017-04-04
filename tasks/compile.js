@@ -1,72 +1,39 @@
-const spawn = require('child_process').spawn
-const clean = require('./clean.js')
-
 switch(process.argv[2]) {
   case 's':
   case 'server':
   case '-s':
   case '--server':
-    process.env.OUTPUT = 'server'
-    break
+    process.env.TARGET = 'server';
+    break;
   case 'm':
   case 'markup':
   case '-m':
   case '--markup':
   default:
-    process.env.OUTPUT = 'markup'
-    break
+    process.env.TARGET = 'markup';
+    break;
 }
 
-// script
-function compileScript() {
-  // webpack --config ./_assets/webpack.config.js --color
-  const webpack = spawn('webpack', ['--config', `${__dirname}/_assets/webpack.config.js`, '--color'])
-  webpack.stdout.on('data', data => {
-    console.log('---webpack:stdout---\n')
-    console.log(`${data}`)
-  })
-  webpack.stderr.on('data', data => {
-    console.log('---webpack:stderr---\n')
-    console.log(`${data}`)
-  })
-}
+const startLog = '/**\n' +
+                 ` * NODE_ENV: ${process.env.NODE_ENV}\n` +
+                 ` * TARGET  : ${process.env.TARGET}\n` +
+                 ' * TASK    : compile\n' +
+                 ' **/\n';
+console.log(startLog);
 
-// style
-function compileStyle() {
-  // node ./_style/compass compile
-  const compass = spawn('node', [`${__dirname}/_assets/compass.js`, 'compile'])
-  compass.stdout.on('data', data => {
-    console.log('---compass:stdout---\n')
-    console.log(`${data}`)
-  })
-  compass.stderr.on('data', data => {
-    console.log('---compass:stderr---\n')
-    console.log(`${data}`)
-  })
-}
+const _webpack = require('./_webpack');
+const _compass = require('./_compass');
+const _ejs = require('./_ejs');
 
-// ejs
-const ejs = {
-  viewPath: `${__dirname}/_view`,
-  compile() {
-    const compile = spawn('node', [`${ejs.viewPath}/compile-ejs.js`])
-    compile.stdout.on('data', data => {
-      console.log('---ejs:stdout---\n')
-      console.log(`${data}`)
-    })
-    compile.stderr.on('data', data => {
-      console.log('---ejs:stderr---\n')
-      console.log(`${data}`)
-    })
-    compile.on('close', () => {
-      console.log('---ejs:close---\n')
-    })
+require('./clean')
+.then(() => {
+  return _webpack.compile();
+})
+.then(() => {
+  return _compass.compile();
+})
+.then(() => {
+  if (process.env.TARGET === 'markup') {
+    _ejs.compile();
   }
-}
-
-// clean()
-compileScript()
-compileStyle()
-if (process.env.OUTPUT === 'markup') {
-  ejs.compile()
-}
+});

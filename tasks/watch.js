@@ -1,86 +1,46 @@
-const gulp = require('gulp')
-const spawn = require('child_process').spawn
-const browserSync = require('browser-sync').create()
-const clean = require('./clean')
-
 switch(process.argv[2]) {
   case 's':
   case 'server':
   case '-s':
   case '--server':
-    process.env.OUTPUT = 'server'
-    break
+    process.env.TARGET = 'server';
+    break;
   case 'm':
   case 'markup':
   case '-m':
   case '--markup':
   default:
-    process.env.OUTPUT = 'markup'
-    break
+    process.env.TARGET = 'markup';
+    break;
 }
 
-// script
-function watchScript() {
-  // webpack -w --config ./_assets/webpack.config.js --color
-  const webpack = spawn('webpack', ['-w', '--config', `${__dirname}/_assets/webpack.config.js`, '--color'])
-  webpack.stdout.on('data', data => {
-    console.log('---webpack:stdout---\n')
-    console.log(`${data}`)
+const startLog = '/**\n' +
+                 ` * NODE_ENV: ${process.env.NODE_ENV}\n` +
+                 ` * TARGET  : ${process.env.TARGET}\n` +
+                 ' * TASK    : watch\n' +
+                 ' **/\n';
+console.log(startLog);
+
+const _webpack = require('./_webpack');
+const _compass = require('./_compass');
+const _ejs = require('./_ejs');
+const _browser = require('./_browser');
+
+function watch() {
+  require('./clean')
+  .then(() => {
+    _ejs.watch();
+    return _compass.watch();
   })
-  webpack.stderr.on('data', data => {
-    console.log('---webpack:stderr---\n')
-    console.log(`${data}`)
+  .then(() => {
+    return _webpack.watch();
   })
+  .then(() => {
+    _browser.start();
+  })
+  .catch((mes) => {
+    console.log(mes);
+  });
 }
 
-// style
-function watchStyle() {
-  // node ./_style/compass watch
-  const compass = spawn('node', [`${__dirname}/_assets/compass.js`, 'watch'])
-  compass.stdout.on('data', data => {
-    console.log('---compass:stdout---\n')
-    console.log(`${data}`)
-  })
-  compass.stderr.on('data', data => {
-    console.log('---compass:stderr---\n')
-    console.log(`${data}`)
-  })
-}
-
-// ejs
-const ejs = {
-  viewPath: `${__dirname}/_view`,
-  compile() {
-    const compile = spawn('node', [`${ejs.viewPath}/compile-ejs.js`])
-    compile.stdout.on('data', data => {
-      console.log('---ejs:stdout---\n')
-      console.log(`${data}`)
-    })
-    compile.stderr.on('data', data => {
-      console.log('---ejs:stderr---\n')
-      console.log(`${data}`)
-    })
-    compile.on('close', browserSync.reload)
-  },
-  watch() {
-    ejs.compile()
-    gulp.watch(`${ejs.viewPath}/**/*.ejs`).on('change', ejs.compile)
-  }
-}
-
-// browserSync
-function startBrowserSync() {
-  const markup = `${__dirname}/markup`
-  browserSync.init({
-    server: { baseDir: markup }
-  })
-  gulp.watch([`${markup}/**/*`, `!${markup}/**/*.html`, `!${markup}/**/*.css.map`]).on('change', browserSync.reload)
-}
-
-// clean()
-watchScript()
-watchStyle()
-if (process.env.OUTPUT === 'markup') {
-  ejs.watch()
-  startBrowserSync()
-}
+watch();
