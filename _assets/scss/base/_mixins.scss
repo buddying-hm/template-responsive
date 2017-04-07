@@ -1,21 +1,39 @@
-@mixin gd($startColor: #ddd, $amount: 15%, $direction: top, $IE: false){
-	$endColor: darken($startColor, $amount);
-	background: mix($startColor, $endColor, 50%);
-    @include background-image(linear-gradient($direction, $startColor, $endColor));
-    @if $IE {
-			@if $direction == top {
-				@include filter-gradient($startColor, $endColor, vertical);
-			}
-			@if $direction == left {
-				@include filter-gradient($startColor, $endColor, horizontal);
-			}
+// keyframesの生成
+@mixin keyframes($animation-name: animaton) {
+	@-webkit-keyframes #{$animation-name} {
+		@content;
+	}
+	@-moz-keyframes #{$animation-name} {
+		@content;
+	}
+	@keyframes #{$animation-name} {
+		@content;
 	}
 }
 
+// アニメーションの生成
+@mixin animation($animation-name) {
+	-webkit-animation: $animation-name;
+	-moz-animation: $animation-name;
+	animation: $animation-name;
+	-webkit-animation-fill-mode: both;
+	-moz-animation-fill-mode: both;
+	animation-fill-mode: both;
+}
 
-@mixin f-width($width, $parentWidth) {
-	max-width: $width;
-	width: ($width / $parentWidth) * 100%;
+
+@mixin gd($startColor: #ddd, $amount: 15%, $direction: top, $IE: false){
+	$endColor: darken($startColor, $amount);
+	background: mix($startColor, $endColor, 50%);
+	@include background-image(linear-gradient($direction, $startColor, $endColor));
+	@if $IE {
+		@if $direction == top {
+			@include filter-gradient($startColor, $endColor, vertical);
+		}
+		@if $direction == left {
+			@include filter-gradient($startColor, $endColor, horizontal);
+		}
+	}
 }
 
 @mixin box-sizing($type) {

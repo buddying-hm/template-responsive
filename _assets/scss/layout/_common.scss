@@ -9,10 +9,9 @@
 	text-align: center;
 }
 #container {
-	@extend .clearfix;
+	@extend %clearfix;
 	@include box-sizing(border-box);
 	margin: 0 auto;
-	padding: $base-line-height;
 	width: $width;
 	@include break-point(tablet) {
 		width: 100%;

@@ -1,4 +1,4 @@
-.clearfix{
+%clearfix{
   zoom:1;
   &:after{
     clear: both;
@@ -7,27 +7,19 @@
   }
 }
 
-.hover {
+%hover {
   @include transition(all .2s ease-in);
   &:hover {
     @include opacity(.7);
   }
 }
 
-.ffg {
+%ffg {
   font-family: 'Noto Sans Japanese', '游ゴシック', YuGothic, 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', sans-serif;
 }
 
-.ffm {
+%ffm {
   font-family: Yu Mincho, '游明朝', 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'HG明朝E', 'ＭＳ Ｐ明朝', 'MS PMincho', 'MS 明朝', serif;
-}
-
-.fr {
-	float: right;
-}
-
-.fl {
-	float: left;
 }
 
 .tac {
