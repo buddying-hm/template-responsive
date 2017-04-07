@@ -6,8 +6,15 @@
     "server_assets_path": "./source/html/assets"
   },
   "scripts": {
-    "start": "node watch",
-    "build": "node build"
+    "start": "node tasks/watch.js markup",
+    "build": "node tasks/build.js",
+    "watch": "node tasks/watch.js markup",
+    "watch:m": "node tasks/watch.js markup",
+    "watch:s": "node tasks/watch.js server",
+    "compile": "node tasks/compile.js markup",
+    "compile:m": "node tasks/compile.js markup",
+    "compile:s": "node tasks/compile.js server",
+    "clean": "node tasks/clean.js"
   },
   "devDependencies": {
     "babel-core": "^6.24.0",
