@@ -1,89 +1,47 @@
-// keyframesの生成
-@mixin keyframes($animation-name: animaton) {
-	@-webkit-keyframes #{$animation-name} {
-		@content;
-	}
-	@-moz-keyframes #{$animation-name} {
-		@content;
-	}
-	@keyframes #{$animation-name} {
-		@content;
-	}
+// #keyframesの生成
+@mixin keyframes($animation-name: animation) {
+    @-webkit-keyframes #{$animation-name} {
+        @content;
+    }
+    @-moz-keyframes #{$animation-name} {
+        @content;
+    }
+    @keyframes #{$animation-name} {
+        @content;
+    }
 }
 
-// アニメーションの生成
+// #アニメーションの生成
 @mixin animation($animation-name) {
-	-webkit-animation: $animation-name;
-	-moz-animation: $animation-name;
-	animation: $animation-name;
-	-webkit-animation-fill-mode: both;
-	-moz-animation-fill-mode: both;
-	animation-fill-mode: both;
+    -webkit-animation: $animation-name;
+    -moz-animation: $animation-name;
+    animation: $animation-name;
+    -webkit-animation-fill-mode: both;
+    -moz-animation-fill-mode: both;
+    animation-fill-mode: both;
 }
 
 
-@mixin gd($startColor: #ddd, $amount: 15%, $direction: top, $IE: false){
-	$endColor: darken($startColor, $amount);
-	background: mix($startColor, $endColor, 50%);
-	@include background-image(linear-gradient($direction, $startColor, $endColor));
-	@if $IE {
-		@if $direction == top {
-			@include filter-gradient($startColor, $endColor, vertical);
-		}
-		@if $direction == left {
-			@include filter-gradient($startColor, $endColor, horizontal);
-		}
-	}
-}
-
-@mixin box-sizing($type) {
-	-webkit-box-sizing:$type;
-	-moz-box-sizing:$type;
-	box-sizing:$type;
-}
-
+// #ブレークポイント
 @mixin break-point($point) {
-	@if $point == pc {
-		@media only screen and (min-width: 1024px) {
-			@content;
-		}
-	} @else if $point == tablet {
-		@media only screen and (max-width: 1023px) {
-			@content;
-		}
-	} @else if $point == mobile {
-		@media only screen and (max-width: 599px) {
-			@content;
-		}
-	}
+    @if $point == pc {
+        @media only screen and (min-width: 1024px) {
+            @content;
+        }
+    } @else if $point == tablet {
+        @media only screen and (max-width: 1023px) {
+            @content;
+        }
+    } @else if $point == mobile {
+        @media only screen and (max-width: 599px) {
+            @content;
+        }
+    }
 }
 
-@mixin centering-elements($horizontal: true, $vertical: true) {
-	position: absolute;
-	@if $horizontal and $vertical {
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-	} @else if $horizontal {
-		left: 50%;
-		transform: translate(-50%, 0);
-	} @else if $vertical {
-		top: 50%;
-		transform: translate(0, -50%);
-	}
-}
-
+// #擬似要素
 @mixin pseudo-element($content: '', $position: absolute, $display: block) {
-	position: $position;
-	display: $display;
-	content: $content;
-}
-
-@mixin retina($ratio) {
-	@media only screen and (min-device-pixel-ratio: $ratio),
-	only screen and (-o-min-device-pixel-ratio: $ratio/1),
-	only screen and (-webkit-min-device-pixel-ratio: $ratio),
-	only screen and (min-device-pixel-ratio: $ratio) {
-		@content;
-	}
+    position: $position;
+    display: $display;
+    content: $content;
 }

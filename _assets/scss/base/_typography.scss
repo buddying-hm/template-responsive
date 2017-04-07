@@ -6,9 +6,9 @@ $base-line-height: 24px;
 @include establish-baseline;
 
 body {
-	@extend %ffg;
-	@include break-point(mobile) {
-		$font-size: 14px;
-		@include adjust-font-size-to($font-size);
-	}
+  @extend %ffg;
+  @include break-point(mobile) {
+    $font-size: 14px;
+    @include adjust-font-size-to($font-size);
+  }
 }

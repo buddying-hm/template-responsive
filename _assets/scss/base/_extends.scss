@@ -8,9 +8,11 @@
 }
 
 %hover {
-  @include transition(all .2s ease-in);
-  &:hover {
-    @include opacity(.7);
+  @include break-point(pc) {
+    @include transition(all .2s ease-in);
+    &:hover {
+      @include opacity(.7);
+    }
   }
 }
 
@@ -23,13 +25,13 @@
 }
 
 .tac {
-	text-align: center;
+  text-align: center;
 }
 
 .tal {
-	text-align: left;
+  text-align: left;
 }
 
 .tar {
-	text-align: right;
+  text-align: right;
 }

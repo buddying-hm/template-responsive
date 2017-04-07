@@ -3,13 +3,13 @@
 
 // 全ての要素をborder-box指定
 * {
-	@include box-sizing(border-box);
+  @include box-sizing(border-box);
 }
 
 
 input,
 textarea {
-	@include reset-focus;
+  @include reset-focus;
 }
 
 img {
