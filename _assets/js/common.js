@@ -1,11 +1,15 @@
-import smoothscroll from './libs/smoothscroll'
+import smoothscroll from './libs/smoothscroll';
 
 function main() {
-  smoothscroll(400)
+  smoothscroll(400);
 }
 
-if (window.i) {
-  main()
+/**
+ * reference
+ * https://github.com/oneuijs/You-Dont-Need-jQuery/blob/master/README-ja.md#イベント
+ */
+if (document.readyState !== 'loading') {
+  main();
 } else {
-  window.addEventListener('load', main)
+  document.addEventListener('DOMContentLoaded', main);
 }
