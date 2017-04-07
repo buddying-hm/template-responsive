@@ -1,6 +1,12 @@
 /*** Reset CSS ***/
 @include global-reset;
 
+// 全ての要素をborder-box指定
+* {
+	@include box-sizing(border-box);
+}
+
+
 input,
 textarea {
 	@include reset-focus;

@@ -155,3 +155,22 @@
 * classはハイフン(`hoge-hoge`)で統一
 * 複数のアイテムを囲うものには`***-wrapper`
 * 連番は`item01`, `item02` 規模によっては`item001`, `item002`とする。語と数字の間にハイフンは使用しない。
+* クラス名、idなど、用途がわかるように省略はしない。(Good: title, Bad: ttl)
+
+
+### 直接的な変数名をつけるときは、用途をあらわす変数名に格納する
+  
+```
+// Good
+$color-red: red;
+$color-error: $color-red;
+.foo { color: $color-error; }
+
+```
+
+```
+// Bad
+$color-red: red;
+.foo { color: $color-red; }
+
+```
