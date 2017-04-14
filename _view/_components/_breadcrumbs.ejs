@@ -1,0 +1,13 @@
+<%
+var list = page.breadcrumbs;
+var lastIndex = list.length - 1;
+%>
+
+<div class="breadcrumbs">
+    <ol>
+        <% for (var i = 0; i < lastIndex; i++) { %>
+        <li><a href="<%= list[i].href %>"><%= list[i].title %></a></li>
+        <% } %>
+        <li><%= list[lastIndex].title %></li>
+    </ol>
+</div>

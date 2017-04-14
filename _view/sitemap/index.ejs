@@ -1,1 +1,19 @@
-sitemap11
+<%
+page = {
+    title: 'サイトマップ',
+    className: 'sitemap',
+    breadcrumbs: [
+        {title: 'トップページ', href: ROOT_DIR},
+        {title: 'サイトマップ'}
+    ]
+};
+%>
+
+<%- include(ROOT_DIR + '_common/_header') -%>
+<%- include(ROOT_DIR + '_components/_breadcrumbs') -%>
+<div class="container">
+    <main id="main">
+        <p>sitemap</p>
+    </main>
+</div>
+<%- include(ROOT_DIR + '_common/_footer') -%>

@@ -1,21 +1,14 @@
 <%
 page = {
     title: 'トップページ',
-    className: 'home',
-    breadcrumbs: []
+    className: 'home'
 };
 %>
 
-<!DOCTYPE html>
-<html lang="ja">
-<%- include(ROOT_DIR + '_common/_head') -%>
-<body class="home">
-    <%- include(ROOT_DIR + '_common/_header') -%>
-    <div class="container">
-        <main id="main">
-            <p>main11</p>
-        </main>
-    </div>
-    <%- include(ROOT_DIR + '_common/_footer') -%>
-</body>
-</html>
+<%- include(ROOT_DIR + '_common/_header') -%>
+<div class="container">
+    <main id="main">
+        <p>main11</p>
+    </main>
+</div>
+<%- include(ROOT_DIR + '_common/_footer') -%>
