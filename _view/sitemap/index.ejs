@@ -2,11 +2,15 @@
 page = {
     title: 'サイトマップ',
     className: 'sitemap',
-    breadcrumbs: []
+    breadcrumbs: [
+        {title: 'トップページ', href: ROOT_DIR},
+        {title: 'サイトマップ'}
+    ]
 };
 %>
 
 <%- include(ROOT_DIR + '_common/_header') -%>
+<%- include(ROOT_DIR + '_components/_breadcrumbs') -%>
 <div class="container">
     <main id="main">
         <p>sitemap</p>
