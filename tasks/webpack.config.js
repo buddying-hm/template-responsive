@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const autoprefixer = require('autoprefixer');
 
 const p_path = require('./p_path');
 
@@ -58,16 +59,30 @@ const webpackConf = [
     module: {
       rules: [
         {
+          test: /\.css$/,
+          use: ExtractTextPlugin.extract({
+            fallback: 'style-loader',
+            use: ['css-loader', 'postcss-loader']
+          })
+        },
+        {
           test: /\.scss$/,
-          loader: ExtractTextPlugin.extract({
-            fallbackLoader: 'style-loader',
-            loader: 'css-loader!sass-loader',
+          use: ExtractTextPlugin.extract({
+            fallback: 'style-loader',
+            use: ['css-loader', 'postcss-loader', 'sass-loader']
           })
         }
       ]
     },
     plugins: [
-      new ExtractTextPlugin('[name].css')
+      new ExtractTextPlugin('[name].css'),
+      new webpack.LoaderOptionsPlugin({
+      options: {
+        postcss: [
+          autoprefixer({ browsers: ['last 2 versions'] })
+        ]
+      }
+    })
     ]
   }
 ];
