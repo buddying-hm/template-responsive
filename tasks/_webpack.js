@@ -45,8 +45,8 @@ const _webpack = {
   },
 
   callback(stats) {
-    console.log(`directory ${webpackConfig.output.path}`);
-    console.log(stats.toString(webpackConfig.stats) + '\n');
+    console.log(`directory ${webpackConfig[0].output.path}`);
+    console.log(stats.toString(webpackConfig[0].stats) + '\n');
   }
 }
 

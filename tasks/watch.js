@@ -22,15 +22,15 @@ const startLog = '/**\n' +
 console.log(startLog);
 
 const _webpack = require('./_webpack');
-const _compass = require('./_compass');
+// const _compass = require('./_compass');
 const _ejs = require('./_ejs');
 const _browser = require('./_browser');
 
 function watch() {
   require('./clean')
   .then(() => {
-    _ejs.watch();
-    return _compass.watch();
+    return _ejs.watch();
+    // return _compass.watch();
   })
   .then(() => {
     return _webpack.watch();
