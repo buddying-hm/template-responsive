@@ -45,3 +45,10 @@
     display: $display;
     content: $content;
 }
+
+// #pxをremに変換
+@mixin font-size-px-to-rem($fontSize) {
+    $rem: ($fontSize / $base-font-size) + rem;
+    font-size: $fontSize;
+    font-size: $rem;
+}
