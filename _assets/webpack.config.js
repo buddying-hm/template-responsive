@@ -3,7 +3,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 
-const p_path = require('./p_path');
+const p_path = require('../tasks/p_path');
 
 process.noDeprecation = true;
 

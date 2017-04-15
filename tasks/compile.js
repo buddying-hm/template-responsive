@@ -1,3 +1,5 @@
+process.env.NODE_ENV = 'development';
+
 switch(process.argv[2]) {
   case 's':
   case 'server':
@@ -22,15 +24,11 @@ const startLog = '/**\n' +
 console.log(startLog);
 
 const _webpack = require('./_webpack');
-const _compass = require('./_compass');
 const _ejs = require('./_ejs');
 
 require('./clean')
 .then(() => {
   return _webpack.compile();
-})
-.then(() => {
-  return _compass.compile();
 })
 .then(() => {
   if (process.env.TARGET === 'markup') {
