@@ -69,8 +69,27 @@ const webpackConf = [
           test: /\.scss$/,
           use: ExtractTextPlugin.extract({
             fallback: 'style-loader',
-            use: ['css-loader', 'postcss-loader', 'sass-loader']
+            use: [
+              {
+                loader: 'css-loader',
+                options: {
+                  sourceMap: true
+                }
+              },
+              { loader: 'postcss-loader' },
+              {
+                loader: 'sass-loader',
+                options: {
+                  outputStyle: 'expanded',
+                  sourceMap: true
+                }
+              }
+            ]
           })
+        },
+        {
+          test: /\.(jpg|png)$/,
+          use: 'url-loader'
         }
       ]
     },
@@ -94,6 +113,8 @@ if (process.env.NODE_ENV === 'production') {
 } else {
   // js and img
   webpackConf[0].devtool = 'inline-source-map';
+  // scss
+  webpackConf[1].devtool = 'inline-source-map';
 }
 
 module.exports = webpackConf;
