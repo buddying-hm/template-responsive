@@ -88,7 +88,7 @@ const webpackConf = [
           })
         },
         {
-          test: /\.(jpg|png)$/,
+          test: /\.(jpg|png|svg)$/,
           use: 'url-loader'
         }
       ]
