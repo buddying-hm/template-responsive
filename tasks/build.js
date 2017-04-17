@@ -9,15 +9,11 @@ const startLog = '/**\n' +
 console.log(startLog);
 
 const _webpack = require('./_webpack');
-const _compass = require('./_compass');
 
 function build() {
   require('./clean')
   .then(() => {
     return _webpack.build();
-  })
-  .then(() => {
-    return _compass.compile();
   });
 }
 

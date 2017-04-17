@@ -1,15 +1,25 @@
-# responsive-template  
+# responsive-template
 
 ## menu
+* [webpack](#webpack)
 * [@include](#include)
 * [@mixin](#mixin)
 * [クラスとIDの命名ルール等](#guideline)
-  
-  
-  
-## @include  
 
-#### use  
+## webpack
+* ベンダープレフィックスは自動付与([autoprefixer](https://github.com/postcss/autoprefixer)使用)
+* 画像のパスはstyle.scssからの相対パス<br>
+  `background: url('../img/common/01.png');`
+  > all urls must be relative to the entry-file (e.g. main.scss).<br>
+  [sass-loader](https://github.com/webpack-contrib/sass-loader)
+* 画像などはbase64に変換されてcssファイル内に記述される([url-loader](https://github.com/webpack-contrib/url-loader)使用)<br>
+  種類を増やす時はwebpack.config.jsに拡張子を増やす<br>
+  `test: /\.(jpg|png)$/`<br>
+  `test: /\.(jpg|png|svg)$/`
+
+## @include
+
+#### use
 
 ```
 .boxA {
@@ -18,7 +28,7 @@
 
 ```
 
-#### output  
+#### output
 
 
 ```
@@ -34,11 +44,11 @@
 ```
 
 
-## @mixin  
+## @mixin
 
-### 擬似要素使用時のプロパティまとめ  
-  
-#### use  
+### 擬似要素使用時のプロパティまとめ
+
+#### use
 
   ```
   .elements {
@@ -53,7 +63,7 @@
 ```
 **第2・第3引数を変更すればposition: relative;にしたりdisplay: inline-block;にしたりもできる**
 
-#### output  
+#### output
 
 ```
 .elements::before {
@@ -71,7 +81,7 @@
 
 
 
-## guideline  
+## guideline
 
 ### 基本の構造
 
@@ -107,7 +117,7 @@
 
 
 ### 直接的な変数名をつけるときは、用途をあらわす変数名に格納する
-  
+
 ```
 // Good
 $color-red: red;
