@@ -3,9 +3,9 @@
  * https://github.com/kriasoft/react-starter-kit/blob/master/tools/bundle.js
  */
 const webpack = require('webpack');
-const webpackConfig = require('../_assets/webpack.config');
+const webpackConfig = require('../../_assets/webpack.config');
 
-const _webpack = {
+class _webpack {
   build() {
     console.log('---webpack compile start---\n');
 
@@ -15,15 +15,15 @@ const _webpack = {
           return reject(err);
         }
 
-        _webpack.callback(stats);
+        this.callback(stats);
         return resolve();
       });
     });
-  },
+  }
 
   compile() {
-    return _webpack.build();
-  },
+    return this.build();
+  }
 
   watch() {
     return new Promise((resolve, reject) => {
@@ -38,11 +38,11 @@ const _webpack = {
         }
 
         console.log('---webpack watch start---\n');
-        _webpack.callback(stats);
+        this.callback(stats);
         return resolve();
       });
     });
-  },
+  }
 
   callback(stats) {
     console.log(`directory ${webpackConfig[0].output.path}`);
@@ -50,4 +50,4 @@ const _webpack = {
   }
 }
 
-module.exports = _webpack;
+module.exports = new _webpack();

@@ -23,16 +23,14 @@ const startLog = '/**\n' +
                  ' **/\n';
 console.log(startLog);
 
-const _webpack = require('./_webpack');
-const _ejs = require('./_ejs');
+const _ejs = require('./lib/_ejs');
+const _webpack = require('./lib/_webpack');
 
-// require('./clean')
-// .then(() => {
-//   return
-// })
-_webpack.compile()
-.then(() => {
-  if (process.env.TARGET === 'markup') {
-    _ejs.compile();
-  }
-});
+if (process.env.TARGET === 'markup') {
+  _ejs.compile()
+  .then(() => {
+    _webpack.compile()
+  });
+} else {
+  _webpack.compile();
+}

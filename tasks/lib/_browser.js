@@ -1,11 +1,12 @@
 const browserSync = require('browser-sync').create();
 const p_path = require('./p_path');
 
-const markup = `${p_path.ROOT}/markup`;
+const markup = `${p_path.root}/markup`;
 
 class DelayTimer {
   constructor() {
     this.isStart = false
+
   }
 
   start() {
@@ -19,17 +20,20 @@ class DelayTimer {
   }
 }
 
-const _browser = {
+class _browser {
+  constructor() {
+    this.timer = new DelayTimer();
+  }
+
   start() {
-    const timer = new DelayTimer();
     browserSync.init({
       server: { baseDir: markup }
     });
 
     const chokidar = require('chokidar');
     const watcher = chokidar.watch([`${markup}/**/*`, `!${markup}/**/*.css.map`]);
-    watcher.on('change', timer.start);
+    watcher.on('change', this.timer.start);
   }
 }
 
-module.exports = _browser;
+module.exports = new _browser();

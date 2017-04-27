@@ -8,13 +8,10 @@ const startLog = '/**\n' +
             ' **/\n';
 console.log(startLog);
 
-const _webpack = require('./_webpack');
+const _webpack = require('./lib/_webpack');
 
 function build() {
-  require('./clean')
-  .then(() => {
-    return _webpack.build();
-  });
+  _webpack.build();
 }
 
 build();

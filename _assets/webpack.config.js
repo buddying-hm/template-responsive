@@ -4,7 +4,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const WebpackCleanupPlugin = require('webpack-cleanup-plugin');
 const autoprefixer = require('autoprefixer');
 
-const p_path = require('../tasks/p_path');
+const p_path = require('../tasks/lib/p_path');
 
 process.noDeprecation = true;
 
@@ -16,7 +16,7 @@ const webpackConf = [
       common: './common.js'
     },
     output: {
-      path: `${p_path.TARGET}/js`,
+      path: p_path.output.js,
       filename: '[name].js',
     },
     resolve: {
@@ -29,8 +29,8 @@ const webpackConf = [
         jQuery: 'jquery',
       }),
       new CopyWebpackPlugin([
-        { from: `${p_path._assets}/js/vender/**/*.js`, to: `${p_path.TARGET}/js`, flatten: true },
-        { from: `${p_path._assets}/img`, to: `${p_path.TARGET}/img` }
+        { from: `${p_path._assets}/js/vender/**/*.js`, to: p_path.output.js, flatten: true },
+        { from: `${p_path._assets}/img`, to: p_path.output.img }
       ]),
     ],
     module: {
@@ -55,7 +55,7 @@ const webpackConf = [
       style: './style.scss'
     },
     output: {
-      path: `${p_path.TARGET}/css`,
+      path: p_path.output.css,
       filename: '[name].css'
     },
     module: {
@@ -96,7 +96,6 @@ const webpackConf = [
       ]
     },
     plugins: [
-      new WebpackCleanupPlugin(),
       new ExtractTextPlugin('[name].css'),
       new webpack.LoaderOptionsPlugin({
       options: {

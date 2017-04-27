@@ -1,63 +1,59 @@
 # はじめに
-## ライブラリインストール
-`npm install` or `yarn`
+## 依存ファイルをローカルにインストール
+package.jsonの内容に基づき依存ファイルをローカルにインストールする。<br>
+`npm install` (yarnを使ってもOK)
 
 ## コンパイルファイルの出力先を設定
 
 `package.json`
 ```json
-"config": {
-  "markup_assets_path": "./markup/assets",
-  "server_assets_path": "./source/html/assets"
+"output": {
+    "markup": {
+        "context": "markup",
+        "css": "assets/css",
+        "js": "assets/js",
+        "img": "assets/img"
+    },
+    "server": {
+        "context": "source/html",
+        "css": "/",
+        "js": "assets/js",
+        "img": "assets/img"
+    }
 }
 ```
+css,js,imgはcontextからのパス<br>
+contextが未設定の場合はpackage.jsonと同じディレクトリがcontextになる。
 
 # フロントエンド Commands
+**実行方法は`npm run <command>`**<br>
+全コマンドは`package.json scripts`に記載。
 
-## `npm start` 開発用コマンド
-* `npm run watch`を実行
+## コマンド
 
-## `npm run build` (`tasks/build.js`) 本番用コマンド
-出力先 => `package.json`の`config.server_assets_path`
-* 出力先フォルダ cleaning (`tasks/clean.js`)
-* JSコンパイル,imgコピー (`tasks/_webpack.js build()`)
-* SCSSコンパイル (`tasks/_compass.js build()`)
+### `start`
+* `watch`を実行
+
+### `build` (`tasks/build.js`)
+出力先 => `package.json`の`output.server`
+* JS,SCSSコンパイル,imgのコピー (`tasks/lib/_webpack.js build()`)
 * *JS,CSSファイルを圧縮
 * *JS,CSSファイルのソースマップなし
 
-## `npm run watch` (`npm run watch:m`) 開発用コマンド
-出力先 => `package.json`の`config.markup_assets_path`
-
-* 出力先フォルダ cleaning (`tasks/clean.js`)
-* JS監視,img監視 (`tasks/_webpack.js watch()`)
-* SCSS監視 (`tasks/_compass.js watch()`)
-* `markup`をルートとしたサーバーを起動 (`tasks/_browser.js start()`)
-* 変更があった場合。サーバーをリロード (`tasks/_browser.js start()`)
-
-## `npm run watch:s` 開発用コマンド
-出力先 => `package.json`の`config.server_assets_path`
-
-* 出力先フォルダ cleaning (`tasks/clean.js`)
-* `tasks/webpack.config.js`で監視 (`tasks/_webpack.js watch()`)
-* `_assets/scss`を監視 (`tasks/_compass.js watch()`)
-
-## `npm run compile` (`npm run compile:m`) 開発用コマンド
-出力先 => `package.json`の`config.markup_assets_path`
-* 出力先フォルダ cleaning (`tasks/clean.js`)
-* JSコンパイル,imgコピー (`tasks/_webpack.js build()`)
-* SCSSコンパイル (`tasks/_compass.js build()`)
+### `compile` (`tasks/compile.js`)
+出力先 => `package.json`の`output.markup`<br>
+_`compile:s`にすると出力先が`package.json`の`output.server`になる。_
+* JS,SCSSコンパイル,imgコピー (`tasks/_webpack.js build()`)
 * JS,CSSファイルは圧縮なし
 * JS,CSSファイルのソースマップ出力
 
-## `npm run compile:s` 開発用コマンド
-出力先 => `package.json`の`config.server_assets_path`
-* 出力先フォルダ cleaning (`tasks/clean.js`)
-* JSコンパイル,imgコピー (`tasks/_webpack.js build()`)
-* SCSSコンパイル (`tasks/_compass.js build()`)
-* JS,CSSファイルは圧縮なし
-* JS,CSSファイルのソースマップ出力
+### `watch` (`tasks/watch.js`)
+出力先 => `package.json`の`output.markup`<br>
+_`watch:s`にすると出力先が`package.json`の`output.server`になりサーバーは起動しない。_
 
-## `npm run clean` キレイキレイ
-両方のコンパイル先をキレイにする。
-* `config.server_assets_path` cleaning (`tasks/clean.js`)
-* `markup` cleaning (`tasks/clean.js`)
+* JS,SCSS,img監視 (`tasks/lib/_webpack.js watch()`)
+* `project-root/markup`ディレクトリをルートとしたサーバーを起動 (`tasks/lib/_browser.js start()`)
+* 監視フォルダに変更があった場合。サーバーをリロード
+
+### `cleaning` (`tasks/clean.js`)
+* `project-root/markup`ディレクトリの中身をキレイにする
