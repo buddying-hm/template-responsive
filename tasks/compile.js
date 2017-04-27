@@ -26,10 +26,11 @@ console.log(startLog);
 const _webpack = require('./_webpack');
 const _ejs = require('./_ejs');
 
-require('./clean')
-.then(() => {
-  return _webpack.compile();
-})
+// require('./clean')
+// .then(() => {
+//   return
+// })
+_webpack.compile()
 .then(() => {
   if (process.env.TARGET === 'markup') {
     _ejs.compile();

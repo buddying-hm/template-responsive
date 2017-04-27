@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const WebpackCleanupPlugin = require('webpack-cleanup-plugin');
 const autoprefixer = require('autoprefixer');
 
 const p_path = require('../tasks/p_path');
@@ -22,6 +23,7 @@ const webpackConf = [
       extensions: ['.js', '.json']
     },
     plugins: [
+      new WebpackCleanupPlugin(),
       new webpack.ProvidePlugin({
         $     : 'jquery',
         jQuery: 'jquery',
@@ -29,7 +31,7 @@ const webpackConf = [
       new CopyWebpackPlugin([
         { from: `${p_path._assets}/js/vender/**/*.js`, to: `${p_path.TARGET}/js`, flatten: true },
         { from: `${p_path._assets}/img`, to: `${p_path.TARGET}/img` }
-      ])
+      ]),
     ],
     module: {
       rules: [
@@ -94,6 +96,7 @@ const webpackConf = [
       ]
     },
     plugins: [
+      new WebpackCleanupPlugin(),
       new ExtractTextPlugin('[name].css'),
       new webpack.LoaderOptionsPlugin({
       options: {
