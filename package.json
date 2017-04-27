@@ -1,20 +1,28 @@
 {
   "name": "project",
   "version": "1.0.0",
-  "config": {
-    "markup_assets_path": "./markup/assets",
-    "server_assets_path": "./source/html/assets"
+  "output": {
+    "markup": {
+      "context": "markup",
+      "css": "assets/css",
+      "js": "assets/js",
+      "img": "assets/img"
+    },
+    "server": {
+      "context": "source/html",
+      "css": "/",
+      "js": "assets/js",
+      "img": "assets/img"
+    }
   },
   "scripts": {
     "start": "node tasks/watch.js markup",
     "build": "node tasks/build.js",
     "watch": "node tasks/watch.js markup",
-    "watch:m": "node tasks/watch.js markup",
     "watch:s": "node tasks/watch.js server",
     "compile": "node tasks/compile.js markup",
-    "compile:m": "node tasks/compile.js markup",
     "compile:s": "node tasks/compile.js server",
-    "clean": "node tasks/clean.js"
+    "cleaning": "node tasks/clean.js"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.7",
@@ -34,7 +42,8 @@
     "sass-loader": "^6.0.3",
     "style-loader": "^0.16.1",
     "url-loader": "^0.5.8",
-    "webpack": "^2.3.2"
+    "webpack": "^2.3.2",
+    "webpack-cleanup-plugin": "^0.5.1"
   },
   "dependencies": {
     "jquery": "^3.2.1"

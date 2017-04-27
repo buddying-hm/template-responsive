@@ -23,33 +23,17 @@ const startLog = '/**\n' +
                  ' **/\n';
 console.log(startLog);
 
-const _webpack = require('./_webpack');
-const _ejs = require('./_ejs');
-const _browser = require('./_browser');
+const _ejs = require('./lib/_ejs');
+const _webpack = require('./lib/_webpack');
+const _browser = require('./lib/_browser');
 
 function watch() {
   if (process.env.TARGET === 'markup') {
-    require('./clean')
-    .then(() => {
-      return _ejs.watch();
-    })
-    .then(() => {
-      return _webpack.watch();
-    })
-    .then(() => {
-      _browser.start();
-    })
-    .catch((mes) => {
-      console.log(mes);
-    });
+    _ejs.watch()
+    .then(() => _webpack.watch())
+    .then(_browser.start)
   } else {
-    require('./clean')
-    .then(() => {
-      _webpack.watch();
-    })
-    .catch((mes) => {
-      console.log(mes);
-    });
+    _webpack.watch();
   }
 }
 

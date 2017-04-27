@@ -1,0 +1,47 @@
+const gulp = require('gulp');
+const del = require('del');
+const beautify = require('gulp-html-beautify');
+const ejs = require('./custom-gulp-ejs');
+const p_path = require('./p_path');
+
+class _ejs {
+  constructor() {
+    this._view = `${p_path.root}/_view`;
+    this.watchfile = [`${this._view}/**/*.ejs`, `!${this._view}/**/_*.ejs`];
+    this.cleanFile = [`${p_path.root}/markup/**/*`, `!${p_path.root}/markup/**/.*`];
+  }
+
+  clean() {
+    console.log('---clean up markup---');
+    console.log(this.cleanFile.join('\n'), '\n');
+    return new Promise(resolve => {
+      del(this.cleanFile).then(() => {
+        resolve();
+      });
+    });
+  }
+
+  compile() {
+    return this.clean().then(() => {
+      console.log('---ejs compile start---');
+      gulp.src(this.watchfile)
+        .pipe(ejs({}, {}, { ext: '.html' }, this._view))
+        .pipe(beautify())
+        .pipe(gulp.dest(`${p_path.root}/markup`));
+    });
+  }
+
+  watch() {
+    const chokidar = require('chokidar');
+    const watcher = chokidar.watch(this._view);
+
+    return this.compile().then(() => {
+      console.log('---ejs watch start...');
+      watcher.on('change', () => {
+        this.compile();
+      });
+    });
+  }
+}
+
+module.exports = new _ejs();
