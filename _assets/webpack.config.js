@@ -82,7 +82,7 @@ const webpackConf = [
               {
                 loader: 'sass-loader',
                 options: {
-                  outputStyle: 'expanded',
+                  outputStyle: 'compact',
                   sourceMap: true
                 }
               }
