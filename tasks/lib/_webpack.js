@@ -45,8 +45,12 @@ class _webpack {
   }
 
   callback(stats) {
-    console.log(`directory ${webpackConfig[0].output.path}`);
-    console.log(stats.toString(webpackConfig[0].stats) + '\n');
+    process.stdout.write(stats.toString({
+      colors: true,
+      modules: false,
+      chunks: false,
+      chunkModules: false
+    }) + '\n\n');
   }
 }
 
