@@ -1,7 +1,9 @@
+import preventPcTelLink from './libs/prevent-pc-tel-link';
 import smoothscroll from './libs/smoothscroll';
 
 function main() {
   smoothscroll(400);
+  preventPcTelLink();
 }
 
 /**
