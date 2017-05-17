@@ -55,3 +55,68 @@
     font-size: $fontSize;
     font-size: convert-px-to-rem($fontSize);
 }
+
+// #テキストリンクホバーアニメーション
+/**
+上からフェード
+@include hover-underline('fade', 'top');
+
+左から右へ伸びる
+@include hover-underline('slide', 'left-right');
+
+**/
+@mixin hover-underline($type: fade, $dir: null, $weight: 1px, $color: #ccc) {
+    @if $dir == null {
+        @if $type == fade {
+            $dir: 'top';
+        } @else if $type == slide {
+            $dir: 'center';
+        }
+    }
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    &::after {
+        position: absolute;
+        left: 0;
+        content: '';
+        width: 100%;
+        height: $weight;
+        background: $color;
+        @if $type == fade {
+            transition: .3s;
+            opacity: 0;
+            visibility: hidden;
+            @if $dir == bottom {
+                bottom: $weight * -4;
+            } @else {
+                bottom: $weight;
+            }
+        } @else if $type == slide {
+            bottom: $weight * -2;
+            transform: scale(0, 1);
+            transition: transform .3s;
+            @if $dir == left-right or $dir == right-in-left {
+                transform-origin: left top;
+            } @else if $dir == right-left or $dir == left-in-right {
+                transform-origin: right top;
+            } @else {
+                transform-origin: center top;
+            }
+        }
+    }
+    &:hover::after {
+        @if $type == fade {
+            bottom: $weight * -2;
+            opacity: 1;
+            visibility: visible;
+        } @else if $type == slide {
+            @if $dir == left-in-right {
+                transform-origin: left top;
+            } @else if $dir == right-in-left {
+                transform-origin: right top;
+            }
+            transform: scale(1, 1);
+        }
+    }
+}
