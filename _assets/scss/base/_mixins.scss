@@ -57,14 +57,6 @@
 }
 
 // #テキストリンクホバーアニメーション
-/**
-上からフェード
-@include hover-underline('fade', 'top');
-
-左から右へ伸びる
-@include hover-underline('slide', 'left-right');
-
-**/
 @mixin hover-underline($type: fade, $dir: null, $weight: 1px, $color: #ccc) {
     @if $dir == null {
         @if $type == fade {
