@@ -8,6 +8,10 @@
     line-height: 3;
     text-align: center;
 }
+html,
+body {
+    height: 100%;
+}
 .container {
     @extend %clearfix;
     @include box-sizing(border-box);
