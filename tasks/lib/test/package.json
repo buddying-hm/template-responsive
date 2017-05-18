@@ -1,0 +1,22 @@
+{
+  "scripts": {
+    "start": "ava -v --watch",
+    "test": "ava"
+  },
+  "devDependencies": {
+    "ava": "^0.19.1"
+  },
+  "ava": {
+    "files": [
+      "*.test.js"
+    ],
+    "source": [
+      "../*.{js,jsx}"
+    ],
+    "concurrency": 5,
+    "failFast": true,
+    "failWithoutAssertions": false,
+    "tap": false,
+    "powerAssert": true
+  }
+}

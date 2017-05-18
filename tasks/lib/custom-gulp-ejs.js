@@ -3,8 +3,8 @@
 var through = require('through2')
 var gutil = require('gulp-util')
 var ejs = require('ejs')
-var path = require('path')
 var assign = require('object-assign')
+var resolveLocalPath = require('./resolve-local-path')
 
 module.exports = function (data, options, settings, root) {
   data = data || {}
@@ -27,14 +27,8 @@ module.exports = function (data, options, settings, root) {
     data = assign({}, data, file.data)
     // customize
     root = root || file.path
-    const dir = path.relative(file.path, root).match(/\//g)
-    if (!dir) {
-        data.ROOT_DIR = ''
-    } else {
-        data.ROOT_DIR = dir.map(slash => {
-            return '..' + slash
-        }).join('')
-    }
+    data.ROOT_DIR = resolveLocalPath(root, file.path)
+
     options.filename = file.path
 
     try {
