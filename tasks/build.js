@@ -1,3 +1,5 @@
+require('./lib/check_nodemodule');
+
 process.env.NODE_ENV = 'production';
 process.env.TARGET = 'server';
 

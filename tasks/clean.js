@@ -1,3 +1,5 @@
+require('./lib/check_nodemodule');
+
 const del = require('del');
 const p_path = require('./lib/p_path');
 
