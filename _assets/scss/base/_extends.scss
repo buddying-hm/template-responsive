@@ -17,20 +17,21 @@
 }
 
 // テキストリンクスタイル
+
 // 上からフェード
-%underline-fade-top-link {
+.underline-fade-top-link {
   @include hover-underline('fade', 'top');
 }
 // 下からフェード
-%underline-fade-bottom-link {
+.underline-fade-bottom-link {
   @include hover-underline('fade', 'bottom');
 }
 // 左から伸びる
-%underline-slide-left-right-link {
+.underline-slide-left-right-link {
   @include hover-underline('slide', 'left-right');
 }
 // 右から伸びる
-%underline-slide-right-left-link {
+.underline-slide-right-left-link {
   @include hover-underline('slide', 'right-left');
 }
 
