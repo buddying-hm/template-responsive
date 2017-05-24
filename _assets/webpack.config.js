@@ -23,7 +23,6 @@ const webpackConf = [
       extensions: ['.js', '.json']
     },
     plugins: [
-      new WebpackCleanupPlugin(),
       new webpack.ProvidePlugin({
         $     : 'jquery',
         jQuery: 'jquery',
@@ -117,6 +116,11 @@ if (process.env.NODE_ENV === 'production') {
   webpackConf[0].devtool = 'inline-source-map';
   // scss
   webpackConf[1].devtool = 'inline-source-map';
+}
+
+if (process.env.TASK !== 'watch') {
+  webpackConf[0].plugins.push(new WebpackCleanupPlugin());
+  webpackConf[1].plugins.push(new WebpackCleanupPlugin());
 }
 
 module.exports = webpackConf;

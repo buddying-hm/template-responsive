@@ -2,13 +2,14 @@ require('./lib/check_nodemodule');
 
 process.env.NODE_ENV = 'production';
 process.env.TARGET = 'server';
+process.env.TASK = 'build';
 
-const startLog = '/**\n' +
-            ` * NODE_ENV: ${process.env.NODE_ENV}\n` +
-            ` * TARGET  : ${process.env.TARGET}\n` +
-            ' * TASK    : build\n' +
-            ' **/\n';
-console.log(startLog);
+let log = '/**\n' +
+          ` * NODE_ENV: ${process.env.NODE_ENV}\n` +
+          ` * TARGET  : ${process.env.TARGET}\n` +
+          ` * TASK    : ${process.env.TASK}\n` +
+          ' **/\n';
+console.log(log);
 
 const _webpack = require('./lib/_webpack');
 
