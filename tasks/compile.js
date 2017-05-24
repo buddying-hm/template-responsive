@@ -1,6 +1,7 @@
 require('./lib/check_nodemodule');
 
 process.env.NODE_ENV = 'development';
+process.env.TASK = 'compile';
 
 switch(process.argv[2]) {
   case 's':
@@ -18,12 +19,12 @@ switch(process.argv[2]) {
     break;
 }
 
-const startLog = '/**\n' +
-                 ` * NODE_ENV: ${process.env.NODE_ENV}\n` +
-                 ` * TARGET  : ${process.env.TARGET}\n` +
-                 ' * TASK    : compile\n' +
-                 ' **/\n';
-console.log(startLog);
+let log = '/**\n' +
+          ` * NODE_ENV: ${process.env.NODE_ENV}\n` +
+          ` * TARGET  : ${process.env.TARGET}\n` +
+          ` * TASK    : ${process.env.TASK}\n` +
+          ' **/\n';
+console.log(log);
 
 const _ejs = require('./lib/_ejs');
 const _webpack = require('./lib/_webpack');
