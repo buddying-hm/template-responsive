@@ -1,36 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head prefix="og: http://ogp.me/ns#">
-    <link rel="canonical" href="">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title></title>
-    <meta content="" name="description">
-    <meta name="format-detection" content="telephone=no">
-    <!-- External files -->
-    <link href="<%= ROOT_DIR %>/assets/css/style.css" rel="stylesheet">
-    <script src="<%= ROOT_DIR %>/assets/js/common.js"></script>
-    <!--[if lt IE 9]>
-    <script src="<%= ROOT_DIR %>/assets/js/html5shiv.min.js"></script>
-    <script src="<%= ROOT_DIR %>/assets/js/css3-mediaqueries.js"></script>
-    <![endif]-->
-    <!-- Favicon, Thumbnail image -->
-    <link href="<%= ROOT_DIR %>/assets/img/common/favicon.ico" rel="shortcut icon">
-    <link href="<%= ROOT_DIR %>/assets/img/common/favicon_big.png" rel="apple-touch-icon">
-    <!-- OGP -->
-    <meta content="" property="og:title">
-    <meta content="" property="og:description">
-    <meta content="" property="og:url">
-    <meta content="" property="og:image">
-    <meta content="website" property="og:type">
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="" />
-    <meta name="twitter:description" content="" />
-    <meta name="twitter:image" content="" />
-    <noscript><style>.noscript{display:block;}</style></noscript>
-</head>
+<%- include('_head') -%>
 <body class="<%= page.className %>">
     <header id="header">
     </header>
