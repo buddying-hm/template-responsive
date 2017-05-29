@@ -7,8 +7,8 @@ export default function imageTrimming(wrapperSelector) {
   $(wrapperSelector).each(function() {
     var $box = $(this);
     var $img = $('img', this);
-    var img_par = getAspectRatio($box); 
-    var box_par = getAspectRatio($img);
+    var box_par = getAspectRatio($box);
+    var img_par = getAspectRatio($img);
     if (img_par > box_par) {
       //画像が枠より横長の場合高さ100%で幅左右を切る
       $img.css({
