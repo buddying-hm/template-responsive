@@ -1,7 +1,7 @@
 # はじめに
 ## 依存ファイルをローカルにインストール
-package.jsonの内容に基づき依存ファイルをローカルにインストールする。<br>
-`npm install` (yarnを使ってもOK)
+package.jsonの内容に基づき依存ファイルをローカルにインストールする。  
+`npm install` or `yarn`
 
 ## コンパイルファイルの出力先を設定
 
@@ -26,7 +26,7 @@ css,js,imgはcontextからのパス<br>
 contextが未設定の場合はpackage.jsonと同じディレクトリがcontextになる。
 
 # フロントエンド Commands
-**実行方法は`npm run <command>`**<br>
+**実行方法は`npm run <command>` or `yarn <command>`**<br>
 全コマンドは`package.json scripts`に記載。
 
 ## コマンド
