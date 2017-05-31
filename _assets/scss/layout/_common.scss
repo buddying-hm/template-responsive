@@ -21,3 +21,27 @@ body {
         width: 100%;
     }
 }
+.box {
+    @extend %vertically-parent;
+    background: skyblue;
+    overflow: hidden;
+    margin-bottom: 1em;
+    img {
+        @extend %vertically-child;
+        &.big {
+            @extend %vertically-child-big;
+        }
+    }
+    &.horizon {
+        width: 500px;
+        height: 300px;
+    }
+    &.vertical {
+        width: 300px;
+        height: 500px;
+    }
+    &.square {
+        width: 400px;
+        height: 400px;
+    }
+}

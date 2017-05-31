@@ -1,9 +1,11 @@
 import preventPcTelLink from './libs/prevent-pc-tel-link';
 import smoothscroll from './libs/smoothscroll';
+import ImageTrimming from './libs/image-trimming';
 
 function main() {
   smoothscroll(400);
   preventPcTelLink();
+  const hoge = new ImageTrimming('.box');
 }
 
 /**

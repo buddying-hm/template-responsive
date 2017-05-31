@@ -2,18 +2,18 @@
  * サムネイルなど、縦長か横長か判断してトリミングする
  * 依存: jquery
  */
-
 export default class ImageTrimmer {
   constructor(wrapperSelector) {
+    var self = this;
     this.boxes = [];
     $(wrapperSelector).each(function() {
       const box = new Box($(this));
-      this.boxes.push(box);
-    })
+      self.boxes.push(box);
+    });
 
     $(window).on('load resize', () => {
       this.setup();
-    })
+    });
   }
 
   setup() {
@@ -32,13 +32,33 @@ class Box {
   setup() {
     const box_par = this.getAspectRatio(this.$box);
     const img_par = this.getAspectRatio(this.$img);
-    if (img_par > box_par) {
-      //画像が枠より横長の場合高さ100%で幅左右を切る
+    if (this.isHorizon(this.$img)) {
       this.autoWidth();
-    } else {
-      //画像が枠より縦長または同じの場合幅100%にして高さの上下を切る
+    } else if (this.isVertical(this.$img)) {
       this.autoHeight();
+    } else {
+      if (this.isHorizon(this.$box)) {
+        this.autoHeight();
+      } else {
+        this.autoWidth();
+      }
     }
+
+    // サイズ修正後、親が横長
+    if (this.isHorizon(this.$box)) {
+      if (this.$box.width() - this.$img.width() > 0) {
+        this.$img.addClass('small');
+      } else {
+        this.$img.addClass('big');
+      }
+    } else {
+      if (this.$box.height() - this.$img.height() > 0) {
+        this.$img.addClass('small');
+      } else {
+        this.$img.addClass('big');
+      }
+    }
+
   }
 
   autoWidth() {
@@ -61,5 +81,13 @@ class Box {
    */
   getAspectRatio($elem) {
     return $elem.width() / $elem.height();
+  }
+
+  isVertical($elem) {
+    return $elem.height() - $elem.width() > 0;
+  }
+
+  isHorizon($elem) {
+    return $elem.width() - $elem.height() > 0;
   }
 }
