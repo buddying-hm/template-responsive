@@ -14,6 +14,7 @@ function p_path() {
     root   : root,
     _assets: path.resolve(root, '_assets'),
     output : {
+      root: context,
       css: path.join(context, pkg.output[TARGET]['css']),
       js : path.join(context, pkg.output[TARGET]['js']),
       img: path.join(context, pkg.output[TARGET]['img'])

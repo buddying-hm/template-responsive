@@ -28,7 +28,6 @@ const webpackConf = [
         jQuery: 'jquery',
       }),
       new CopyWebpackPlugin([
-        { from: `${p_path._assets}/js/vendor/**/*.js`, to: p_path.output.js, flatten: true },
         { from: `${p_path._assets}/img`, to: p_path.output.img }
       ]),
     ],
