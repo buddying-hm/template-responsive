@@ -23,7 +23,12 @@ const delayTimer = new DelayTimer();
 class _browser {
   start() {
     browserSync.init({
-      server: { baseDir: markup }
+      server: { baseDir: markup },
+      ghostMode: {
+        clicks: true,
+        forms : true,
+        scroll: false
+      }
     });
 
     const chokidar = require('chokidar');
