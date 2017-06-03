@@ -41,31 +41,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-%vertically-parent {
-    overflow: hidden;
     position: relative;
+    overflow: hidden;
 }
-
-%vertically-child {
+%vertically-centered-child {
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    margin: auto;
 }
-
-%vertically-child-big {
-    position: absolute;
-    top: -100%;
-    right: -100%;
-    bottom: -100%;
-    left: -100%;
-    margin: auto;
-}
-
 
 %ffg {
   font-family: 'Noto Sans Japanese', '游ゴシック', YuGothic, 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', sans-serif;
