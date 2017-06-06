@@ -37,12 +37,16 @@
 
 
 // 天地中央揃え
-%vertically-centered {
+%vertically-centered-parent {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    overflow: hidden;
 }
-
+%vertically-centered-child {
+    position: absolute;
+}
 
 %ffg {
   font-family: 'Noto Sans Japanese', '游ゴシック', YuGothic, 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', sans-serif;
