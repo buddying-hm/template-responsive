@@ -25,8 +25,8 @@ class _browser {
     browserSync.init({
       server: { baseDir: markup },
       ghostMode: {
-        clicks: true,
-        forms : true,
+        clicks: false,
+        forms: false,
         scroll: false
       }
     });
