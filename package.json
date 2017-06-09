@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "output": {
     "markup": {
-      "context": "markup",
+      "context": "public",
       "css": "assets/css",
       "js": "assets/js",
       "img": "assets/img"

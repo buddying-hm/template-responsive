@@ -8,7 +8,7 @@ class _ejs {
   constructor() {
     this._view = `${p_path.root}/_view`;
     this.watchfile = [`${this._view}/**/*.ejs`, `!${this._view}/**/_*.ejs`];
-    this.cleanFile = [`${p_path.root}/markup/**/*.html`, `!${p_path.root}/markup/**/.*`, `!${p_path.output.css}`, `!${p_path.output.js}`, `!${p_path.output.img}`];
+    this.cleanFile = [`${p_path.root}/public/**/*.html`, `!${p_path.root}/public/**/.*`, `!${p_path.output.css}`, `!${p_path.output.js}`, `!${p_path.output.img}`];
   }
 
   clean() {
@@ -27,7 +27,7 @@ class _ejs {
       gulp.src(this.watchfile)
         .pipe(ejs({}, {}, { ext: '.html' }, this._view))
         .pipe(beautify())
-        .pipe(gulp.dest(`${p_path.root}/markup`));
+        .pipe(gulp.dest(`${p_path.root}/public`));
     });
   }
 
