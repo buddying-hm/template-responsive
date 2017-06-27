@@ -4,14 +4,16 @@
  */
 export default class FitElem {
   constructor(parentSelector, childSelector) {
-    var self = this;
+    const self = this;
+
     this.boxes = [];
-    $(parentSelector).each(function() {
+    $(parentSelector).each(/* @this HTMLElement */function() {
       const box = new Box($(this), childSelector);
+
       self.boxes.push(box);
     });
 
-    if (this.boxes.length <= 0) return;
+    if (this.boxes.length <= 0) { return; }
 
     this.setup();
     $(window).on('resize', this.setup.bind(this));
@@ -21,38 +23,6 @@ export default class FitElem {
     this.boxes.forEach(box => {
       box.setup();
     });
-  }
-}
-
-class Box {
-  constructor($parent, childSelector) {
-    this.parent = new Parent($parent);
-    this.child = new Child($(childSelector, $parent));
-  }
-
-  setup() {
-    if (this.child.isSquare) {
-      if (this.parent.isSquare) {
-        this.child.fit();
-        return;
-      }
-
-      if (this.parent.isHorizon) {
-        this.child.fitWidth();
-      } else {
-        this.child.fitHeight();
-      }
-      return;
-    }
-
-    if (this.child.isHorizon) {
-      this.child.fitHeight();
-      return;
-    }
-    if (this.child.isVertical) {
-      this.child.fitWidth();
-      return;
-    }
   }
 }
 
@@ -96,5 +66,37 @@ class Child extends Elem {
       width: 'auto',
       height: '100%'
     });
+  }
+}
+
+class Box {
+  constructor($parent, childSelector) {
+    this.parent = new Parent($parent);
+    this.child = new Child($(childSelector, $parent));
+  }
+
+  setup() {
+    if (this.child.isSquare) {
+      if (this.parent.isSquare) {
+        this.child.fit();
+        return;
+      }
+
+      if (this.parent.isHorizon) {
+        this.child.fitWidth();
+      } else {
+        this.child.fitHeight();
+      }
+      return;
+    }
+
+    if (this.child.isHorizon) {
+      this.child.fitHeight();
+      return;
+    }
+    if (this.child.isVertical) {
+      this.child.fitWidth();
+
+    }
   }
 }
