@@ -1,7 +1,7 @@
 const browserSync = require('browser-sync').create();
 const p_path = require('./p_path');
 
-const markup = `${p_path.root}/markup`;
+const markup = p_path.output.root;
 
 class DelayTimer {
   constructor() {

@@ -3,14 +3,14 @@
   "version": "1.0.0",
   "output": {
     "markup": {
-      "context": "markup",
+      "context": "../public",
       "css": "assets/css",
       "js": "assets/js",
       "img": "assets/img"
     },
     "server": {
-      "context": "source/html",
-      "css": "/",
+      "context": "../source/html",
+      "css": "assets/css",
       "js": "assets/js",
       "img": "assets/img"
     }

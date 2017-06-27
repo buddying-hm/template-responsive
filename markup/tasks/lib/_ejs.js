@@ -8,14 +8,14 @@ class _ejs {
   constructor() {
     this._view = `${p_path.root}/_view`;
     this.watchfile = [`${this._view}/**/*.ejs`, `!${this._view}/**/_*.ejs`];
-    this.cleanFile = [`${p_path.root}/markup/**/*.html`, `!${p_path.root}/markup/**/.*`, `!${p_path.output.css}`, `!${p_path.output.js}`, `!${p_path.output.img}`];
+    this.cleanFile = [`${p_path.output.root}/**/*.html`, `!${p_path.output.root}/**/.*`, `!${p_path.output.css}`, `!${p_path.output.js}`, `!${p_path.output.img}`];
   }
 
   clean() {
-    console.log('---clean up markup---');
+    console.log('---clean up directory---');
     console.log(this.cleanFile.join('\n'), '\n');
     return new Promise(resolve => {
-      del(this.cleanFile).then(() => {
+      del(this.cleanFile, {force: true}).then(() => {
         resolve();
       });
     });
@@ -27,7 +27,7 @@ class _ejs {
       gulp.src(this.watchfile)
         .pipe(ejs({}, {}, { ext: '.html' }, this._view))
         .pipe(beautify())
-        .pipe(gulp.dest(`${p_path.root}/markup`));
+        .pipe(gulp.dest(p_path.output.root));
     });
   }
 
