@@ -1,6 +1,6 @@
 // Karma configuration
 // Generated on Tue Jun 27 2017 10:29:07 GMT+0900 (JST)
-let webpack = require('webpack');
+const webpack = require('webpack');
 
 module.exports = function(config) {
   config.set({
@@ -39,8 +39,8 @@ module.exports = function(config) {
       devtool: 'inline-source-map',
       plugins: [
         new webpack.ProvidePlugin({
-          $     : 'jquery',
-          jQuery: 'jquery',
+          $: 'jquery',
+          jQuery: 'jquery'
         })
       ],
       module: {
@@ -77,5 +77,5 @@ module.exports = function(config) {
     // Concurrency level
     // how many browser should be started simultaneous
     concurrency: Infinity
-  })
-}
+  });
+};

@@ -1,0 +1,24 @@
+{
+  "extends": ["eslint:recommended", "eslint"],
+  "env": {
+    "node": true,
+    "browser": true,
+    "es6": true,
+    "jquery": true,
+    "mocha": true
+  },
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "rules": {
+    "indent": ["error", 2],
+    "quotes": ["error", "single"],
+    "brace-style": ["error", "1tbs", { "allowSingleLine": true }],
+    "no-useless-constructor": "off",
+    "no-use-before-define": "off",
+    "no-new": "off",
+    "lines-around-comment": "off",
+    "camelcase": "off",
+    "no-underscore-dangle": "off"
+  }
+}

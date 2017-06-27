@@ -15,9 +15,9 @@ class Device {
   get isIE() { return this.isMSIE || this.isIE11; }
   get isEdge() { return this.ua.indexOf('edge') > -1; }
 
-  get isChrome() { return this.ua.indexOf('chrome') > -1 && this.ua.indexOf('edge') == -1; }
+  get isChrome() { return this.ua.indexOf('chrome') > -1 && this.ua.indexOf('edge') === -1; }
   get isFirefox() { return this.ua.indexOf('firefox') > -1; }
-  get isSafari() { return this.ua.indexOf('safari') > -1 && this.ua.indexOf('chrome') == -1; }
+  get isSafari() { return this.ua.indexOf('safari') > -1 && this.ua.indexOf('chrome') === -1; }
   get isOpera() { return this.ua.indexOf('opera') > -1; }
 }
 

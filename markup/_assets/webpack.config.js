@@ -13,23 +13,23 @@ const webpackConf = [
   {
     context: `${p_path._assets}/js`,
     entry: {
-      common: './common.js'
+      common: ['babel-polyfill', './common.js']
     },
     output: {
       path: p_path.output.js,
-      filename: '[name].js',
+      filename: '[name].js'
     },
     resolve: {
       extensions: ['.js', '.json']
     },
     plugins: [
       new webpack.ProvidePlugin({
-        $     : 'jquery',
-        jQuery: 'jquery',
+        $: 'jquery',
+        jQuery: 'jquery'
       }),
       new CopyWebpackPlugin([
         { from: `${p_path._assets}/img`, to: p_path.output.img }
-      ]),
+      ])
     ],
     module: {
       rules: [
@@ -96,12 +96,12 @@ const webpackConf = [
     plugins: [
       new ExtractTextPlugin('[name].css'),
       new webpack.LoaderOptionsPlugin({
-      options: {
-        postcss: [
-          autoprefixer({ browsers: ['last 2 versions'] })
-        ]
-      }
-    })
+        options: {
+          postcss: [
+            autoprefixer({ browsers: ['last 2 versions'] })
+          ]
+        }
+      })
     ]
   }
 ];
