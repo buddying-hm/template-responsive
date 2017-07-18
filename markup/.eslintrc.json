@@ -5,7 +5,7 @@
     "browser": true,
     "es6": true,
     "jquery": true,
-    "mocha": true
+    "jest": true
   },
   "parserOptions": {
     "sourceType": "module"
@@ -19,6 +19,10 @@
     "no-new": "off",
     "lines-around-comment": "off",
     "camelcase": "off",
-    "no-underscore-dangle": "off"
+    "no-underscore-dangle": "off",
+    "require-jsdoc": "off",
+    "eol-last": "off",
+    "newline-after-var": "off",
+    "prefer-const": "off"
   }
 }
