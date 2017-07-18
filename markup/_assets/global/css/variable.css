@@ -1,0 +1,14 @@
+:root {
+    --width: 1024px;
+
+    // color
+    --red: red;
+    --green: green;
+    --blue: blue;
+
+    --keyColor: var(--red);
+}
+
+div {
+  color: var(--keyColor);
+}

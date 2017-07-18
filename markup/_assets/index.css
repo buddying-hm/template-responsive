@@ -1,0 +1,7 @@
+@charset "utf-8";
+
+@import "global/css/variable.css";
+@import "global/css/reset.css";
+@import "global/css/base.css";
+
+@import "namespace/**/*.css";

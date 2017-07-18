@@ -8,6 +8,7 @@ process.noDeprecation = true;
 if (process.env.NODE_ENV === 'production') {
   webpackJsConfig.plugins.push(new webpack.optimize.UglifyJsPlugin());
   webpackJsConfig.plugins.push(new webpack.DefinePlugin({ 'process.env': { NODE_ENV: 'production' } }));
+  webpackCssConfig.plugins.push(new webpack.DefinePlugin({ 'process.env': { NODE_ENV: 'production' } }));
 } else {
   webpackJsConfig.devtool = 'inline-source-map';
   webpackCssConfig.devtool = 'inline-source-map';

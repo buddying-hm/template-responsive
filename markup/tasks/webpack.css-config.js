@@ -5,7 +5,7 @@ const p_path = require('./lib/p_path');
 const webpackConf = {
   context: `${p_path._assets}`,
   entry: {
-    style: './style.css'
+    style: './index.css'
   },
   output: {
     path: p_path.output.css,
@@ -17,7 +17,10 @@ const webpackConf = {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: ['css-loader', 'postcss-loader']
+          use: [
+            { loader: 'css-loader', options: { importLoaders: 1 } },
+            'postcss-loader'
+          ]
         })
       },
       {
@@ -33,7 +36,10 @@ const webpackConf = {
         postcss: [
           // 読み込む順番大事
           require('postcss-easy-import'),
-          require('autoprefixer')({ browsers: ['last 2 versions'] })
+          require('postcss-cssnext')({
+            browsers: ['last 2 versions']
+          })
+          // require('postcss-nested')
         ]
       }
     })
