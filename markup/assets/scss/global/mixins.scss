@@ -1,0 +1,89 @@
+// #ブレークポイント
+@mixin break-point($point) {
+    @if $point == pc {
+        @media only screen and (min-width: 1024px) {
+            @content;
+        }
+    } @else if $point == tablet {
+        @media only screen and (max-width: 1023px) {
+            @content;
+        }
+    } @else if $point == mobile {
+        @media only screen and (max-width: 599px) {
+            @content;
+        }
+    }
+}
+
+// #擬似要素
+@mixin pseudo-element($content: '', $position: absolute, $display: block) {
+    position: $position;
+    display: $display;
+    content: $content;
+}
+
+// #pxをremに変換
+@mixin font-size-px-to-rem($fontSize) {
+    font-size: ($fontSize / $base-font-size) + rem;
+}
+
+// #テキストリンクホバーアニメーション
+@mixin hover-underline($type: fade, $dir: null, $weight: 1px, $color: #ccc) {
+    @if $dir == null {
+        @if $type == fade {
+            $dir: 'top';
+        } @else if $type == slide {
+            $dir: 'center';
+        }
+    }
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    transition: all .5s ease;
+    &::after {
+        position: absolute;
+        left: 0;
+        content: '';
+        width: 100%;
+        height: $weight;
+        background: $color;
+        @if $type == fade {
+            transition: .3s;
+            opacity: 0;
+            visibility: hidden;
+            @if $dir == bottom {
+                bottom: $weight * -4;
+            } @else {
+                bottom: $weight;
+            }
+        } @else if $type == slide {
+            bottom: $weight * -2;
+            transform: scale(0, 1);
+            transition: transform .3s;
+            @if $dir == left-right or $dir == right-in-left {
+                transform-origin: left top;
+            } @else if $dir == right-left or $dir == left-in-right {
+                transform-origin: right top;
+            } @else {
+                transform-origin: center top;
+            }
+        }
+    }
+    &:hover::after {
+        @if $type == fade {
+            bottom: $weight * -2;
+            opacity: 1;
+            visibility: visible;
+        } @else if $type == slide {
+            @if $dir == left-in-right {
+                transform-origin: left top;
+            } @else if $dir == right-in-left {
+                transform-origin: right top;
+            }
+            transform: scale(1, 1);
+        }
+    }
+    &:hover {
+        opacity: .6;
+    }
+}
