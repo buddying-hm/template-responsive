@@ -17,6 +17,7 @@
   },
   "scripts": {
     "start": "node tasks/watch.js markup",
+    "test": "jest",
     "lint": "npm run eslint",
     "eslint": "eslint assets/js",
     "build": "node tasks/build.js",
@@ -29,6 +30,7 @@
   "devDependencies": {
     "autoprefixer": "^6.7.7",
     "babel-core": "^6.24.0",
+    "babel-jest": "^20.0.3",
     "babel-loader": "^6.4.1",
     "babel-preset-es2015": "^6.24.0",
     "browser-sync": "^2.18.8",
@@ -43,6 +45,7 @@
     "gulp": "^3.9.1",
     "gulp-html-beautify": "^1.0.1",
     "import-glob-loader": "^1.1.0",
+    "jest": "^20.0.4",
     "node-sass": "^4.5.3",
     "postcss-loader": "^2.0.6",
     "sass-loader": "^6.0.6",
@@ -54,5 +57,11 @@
   "dependencies": {
     "babel-polyfill": "^6.23.0",
     "jquery": "^3.2.1"
+  },
+  "jest": {
+    "rootDir": "assets/js"
+  },
+  "babel": {
+    "presets": ["es2015"]
   }
 }
