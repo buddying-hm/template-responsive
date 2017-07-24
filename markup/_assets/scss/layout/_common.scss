@@ -21,24 +21,3 @@ body {
         width: 100%;
     }
 }
-.box {
-    @extend %vertically-centered-parent;
-    background: skyblue;
-    overflow: hidden;
-    margin-bottom: 1em;
-    img {
-        @extend %vertically-centered-child;
-    }
-    &.horizon {
-        width: 100%;
-        height: 100px;
-    }
-    &.vertical {
-        width: 100px;
-        height: 500px;
-    }
-    &.square {
-        width: 500px;
-        height: 500px;
-    }
-}
