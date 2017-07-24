@@ -6,6 +6,3 @@ html {
         font-size: $base-mobile-font-size;
     }
 }
-body {
-    @include font-size-px-to-rem(18px);
-}

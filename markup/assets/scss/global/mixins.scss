@@ -15,6 +15,12 @@
     }
 }
 
+@mixin device-pixel-ratio($ratio: 2) {
+    @media screen and (min-resolution: #{$ratio}dppx) {
+        @content;
+    }
+}
+
 // #擬似要素
 @mixin pseudo-element($content: '', $position: absolute, $display: block) {
     position: $position;
