@@ -11,9 +11,10 @@ export default function smoothScroll(param) {
   $('a[href^="#"]').on('click', /* @this HTMLElement */ function() {
     const href = $(this).attr('href');
     const target = $(href === '#' || href === '' ? 'html' : href);
-    const position = target.offset().top;
+    const offset = target.offset();
+    if (!offset) return;
 
-    $('body,html').animate({ scrollTop: position }, scrollSpeed, 'swing');
+    $('body,html').animate({ scrollTop: offset.top }, scrollSpeed, 'swing');
     return true;
   });
 }

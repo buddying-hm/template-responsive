@@ -25,6 +25,7 @@
     "no-console": "warn",
     "newline-after-var": "off",
     "require-jsdoc": "off",
-    "prefer-const": "warn"
+    "prefer-const": "warn",
+    "curly": "off"
   }
 }
