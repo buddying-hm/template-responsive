@@ -1,6 +1,14 @@
-@import url(https://fonts.googleapis.com/earlyaccess/notosansjapanese.css);
+// 全ての要素をborder-boxにリセット
+* {
+    box-sizing: border-box;
+}
+
+img {
+  vertical-align: top;
+}
 
 html {
+    @extend %ffg;
     font-size: $base-font-size;
     @include break-point(mobile) {
         font-size: $base-mobile-font-size;
