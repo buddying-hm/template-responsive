@@ -1,9 +1,9 @@
 /* global */
-@import "global/variable";
-@import "global/mixins";
-@import "global/extends";
-@import "global/reset";
-@import "global/base";
+@import "global/01.variable";
+@import "global/02.mixins";
+@import "global/03.extends";
+@import "global/04.reset";
+@import "global/05.base";
 
 /* namespace */
 @import "namespace/Structure/Header/st-header";
