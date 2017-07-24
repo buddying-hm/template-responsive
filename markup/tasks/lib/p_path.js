@@ -12,7 +12,7 @@ function p_path() {
 
   return {
     root   : root,
-    _assets: path.resolve(root, '_assets'),
+    _assets: path.resolve(root, 'assets'),
     output : {
       root: context,
       css: path.join(context, pkg.output[TARGET]['css']),

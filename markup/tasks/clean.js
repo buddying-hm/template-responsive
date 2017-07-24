@@ -7,10 +7,10 @@ const del = require('del');
 const p_path = require('./lib/p_path');
 
 function clean() {
-  const cleanFiles =  [`${p_path.output.root}/**/*`, `!${p_path.output.root}/**/.*`];
+  const cleanFiles = [`${p_path.output.root}/**/*`, `!${p_path.output.root}/**/.*`];
   console.log('---clean up directory---');
   console.log(cleanFiles.join('\n'), '\n');
-  del(cleanFiles, {force: true}).then(() => {
+  del(cleanFiles, { force: true }).then(() => {
     console.log('---cleaning finished---');
   });
 }

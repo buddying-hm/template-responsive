@@ -3,7 +3,7 @@ require('./lib/check_nodemodule');
 process.env.NODE_ENV = 'development';
 process.env.TASK = 'compile';
 
-switch(process.argv[2]) {
+switch (process.argv[2]) {
   case 's':
   case 'server':
   case '-s':

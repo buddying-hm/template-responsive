@@ -3,7 +3,7 @@ require('./lib/check_nodemodule');
 process.env.NODE_ENV = 'development';
 process.env.TASK = 'watch';
 
-switch(process.argv[2]) {
+switch (process.argv[2]) {
   case 's':
   case 'server':
   case '-s':
@@ -33,8 +33,8 @@ const _browser = require('./lib/_browser');
 function watch() {
   if (process.env.TARGET === 'markup') {
     _ejs.watch()
-    .then(() => _webpack.watch())
-    .then(_browser.start)
+      .then(() => _webpack.watch())
+      .then(_browser.start);
   } else {
     _webpack.watch();
   }

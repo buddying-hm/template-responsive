@@ -3,7 +3,7 @@
  * https://github.com/kriasoft/react-starter-kit/blob/master/tools/bundle.js
  */
 const webpack = require('webpack');
-const webpackConfig = require('../webpack.config');
+const webpackConfig = require('../../config/webpack.config');
 
 class _webpack {
   build() {

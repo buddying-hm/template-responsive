@@ -1,4 +1,5 @@
 {
+  "root": true,
   "extends": ["eslint:recommended", "eslint"],
   "env": {
     "node": true,
@@ -19,6 +20,11 @@
     "no-new": "off",
     "lines-around-comment": "off",
     "camelcase": "off",
-    "no-underscore-dangle": "off"
+    "no-underscore-dangle": "off",
+    "wrap-iife": "off",
+    "no-console": "warn",
+    "newline-after-var": "off",
+    "require-jsdoc": "off",
+    "prefer-const": "warn"
   }
 }

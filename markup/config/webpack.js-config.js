@@ -1,11 +1,11 @@
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const p_path = require('./lib/p_path');
+const p_path = require('../tasks/lib/p_path');
 
 const webpackConf = {
   context: `${p_path._assets}`,
   entry: {
-    common: ['babel-polyfill', './index.js']
+    common: ['babel-polyfill', './js/common.js']
   },
   output: {
     path: p_path.output.js,
@@ -19,9 +19,9 @@ const webpackConf = {
       $: 'jquery',
       jQuery: 'jquery'
     }),
-    // new CopyWebpackPlugin([
-    //   { from: `${p_path._assets}/img`, to: p_path.output.img }
-    // ])
+    new CopyWebpackPlugin([
+      { from: `${p_path._assets}/img`, to: p_path.output.img }
+    ])
   ],
   module: {
     rules: [
