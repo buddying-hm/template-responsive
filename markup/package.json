@@ -17,7 +17,6 @@
   },
   "scripts": {
     "start": "node tasks/watch.js markup",
-    "test": "karma start",
     "lint": "npm run eslint",
     "eslint": "eslint assets/js",
     "build": "node tasks/build.js",
